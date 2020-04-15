@@ -1,0 +1,15 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.ButtonFlowStepperStyle{
+    pointer-events: none !important;
+}
+.PageFlowdiv{
+    width:100%;  
+    background-color:white;
+    margin: 1em auto 1em auto;
+}
+.PageFlowButtondiv{
+    display: block;
+    position: fixed;
+    width:100%;    
+    bottom: 300px;
+}

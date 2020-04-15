@@ -1,0 +1,36 @@
+<div *ngIf="flowType=='WizardFlow'; then WizardFlow; else ButtonFlow">
+</div>
+
+<ng-template #WizardFlow>
+  <mat-horizontal-stepper #stepper>
+    <mat-step *ngFor='let step of steps; let i=index'>
+      <ng-template matStepLabel>step {{i+1}}</ng-template>
+      <app-step-page-wrapper [item]='step'></app-step-page-wrapper>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-template>
+
+<!--Button Flow -->
+<ng-template #ButtonFlow>
+  <!-- <mat-horizontal-stepper #stepper class="ButtonFlowStepperStyle">
+    <mat-step *ngFor='let step of steps; let i=index' style="height: 0px; visibility: hidden;">      
+      <ng-template matStepLabel>step {{i+1}}</ng-template>
+      <app-step-page-wrapper [item]='step'></app-step-page-wrapper>
+    </mat-step>
+  </mat-horizontal-stepper> -->
+  <!-- 
+  <div *ngIf="buttonFlowPageIndex">
+    <app-step-page-wrapper [item]='steps[globalIndex]'></app-step-page-wrapper>
+  </div> -->
+
+  <div *ngFor="let item of steps; let i=index" class="PageFlowdiv">
+    <div [hidden]="i!=buttonFlowPageIndex">
+      <app-step-page-wrapper [item]='item'></app-step-page-wrapper>
+    </div>    
+  </div>
+  <br/>
+  <div class="PageFlowButtondiv">
+    <button mat-raised-button color="primary" (click)="goBack()" type="button" [disabled]="buttonFlowPageIndex === 0">Back</button>
+    <button mat-raised-button color="primary" (click)="goForward()" type="button" [disabled]="buttonFlowPageIndex === steps.length-1">Next</button>
+  </div>
+</ng-template>
